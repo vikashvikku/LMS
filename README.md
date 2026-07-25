@@ -1,36 +1,299 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🎓 CampusOS
 
-## Getting Started
+CampusOS is a modern, role-based university and campus management platform designed to bring academic and administrative activities into a unified digital environment.
 
-First, run the development server:
+The platform provides dedicated interfaces for students and faculty members, allowing them to manage courses, assignments, attendance, grades, fees, library activities, announcements, and other academic operations through a responsive web application.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+CampusOS is built using Next.js and Supabase with role-based access control, Row Level Security (RLS), and a centralized PostgreSQL database.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## ✨ Overview
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+University systems often distribute academic information across multiple portals and services. CampusOS aims to provide a centralized platform where students and faculty can access the information and functionality relevant to their roles.
 
-## Learn More
+The application currently includes dedicated Student and Faculty experiences with real data retrieved from Supabase.
 
-To learn more about Next.js, take a look at the following resources:
+### Student Portal
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Students can access:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Academic dashboard
+- Enrolled courses
+- Timetable
+- Attendance
+- Assignments
+- Grades and results
+- Fee information
+- Library records
+- Announcements
+- Notifications
+- Global search
 
-## Deploy on Vercel
+### Faculty Portal
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Faculty members can access:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Teaching dashboard
+- Assigned course sections
+- Student information
+- Attendance management
+- Assignment management
+- Assignment creation
+- Grades and academic evaluation
+- Announcements
+- Global search
+
+---
+
+# 🚀 Core Features
+
+## 🔐 Authentication & Authorization
+
+CampusOS provides secure authentication using Supabase Auth.
+
+The application supports role-based access for:
+
+- Students
+- Faculty
+
+After authentication, users are directed to the appropriate portal according to their assigned role.
+
+Authorization is enforced through application logic and Supabase Row Level Security policies.
+
+---
+
+## 📊 Role-Based Dashboards
+
+### Student Dashboard
+
+The student dashboard provides a quick overview of academic activity, including:
+
+- Number of enrolled courses
+- Pending assignments
+- Attendance percentage
+- Average academic score
+- Upcoming assignments
+- Recent announcements
+
+### Faculty Dashboard
+
+The faculty dashboard provides teaching-related information such as:
+
+- Assigned sections
+- Total students
+- Active assignments
+- Pending submissions
+- Today's classes
+- Upcoming deadlines
+- Recent announcements
+
+Dashboard information is dynamically retrieved from the database.
+
+---
+
+## 📚 Course Management
+
+CampusOS provides role-specific course views.
+
+Students can view courses and sections in which they are enrolled.
+
+Faculty members can view the course sections assigned to them.
+
+Course information is connected with the academic structure stored in Supabase.
+
+---
+
+## 📝 Assignment Management
+
+The assignment module allows academic assignments to be managed within CampusOS.
+
+Current functionality includes:
+
+- Faculty assignment listing
+- Assignment creation
+- Section-based assignment association
+- Assignment descriptions and instructions
+- Due date and time
+- Maximum marks
+- Assignment publishing status
+- Student assignment visibility
+- Assignment-related academic information
+
+Further end-to-end submission and grading workflow integration is under development.
+
+---
+
+## 📅 Attendance Management
+
+CampusOS provides attendance functionality for both students and faculty.
+
+Students can view their attendance information, while faculty members can manage attendance for their assigned academic sections.
+
+Attendance data is stored centrally and retrieved according to the authenticated user's permissions.
+
+---
+
+## 🎓 Grades & Results
+
+Students can view their academic performance through the Grades & Results module.
+
+The interface supports:
+
+- Assignment scores
+- Maximum marks
+- Percentage calculation
+- Academic performance visualization
+- Course-related grade information
+
+Faculty grading workflows are being progressively integrated with the assignment system.
+
+---
+
+## 💳 Fee Management
+
+The fee module provides students with access to financial information related to their academic program.
+
+The underlying system includes support for:
+
+- Fee structures
+- Student fee records
+- Payments
+- Payment transactions
+- Academic-year-based fee information
+
+Currency values throughout CampusOS are intended to use the Indian Rupee (₹).
+
+---
+
+## 📖 Library Management
+
+CampusOS includes an integrated library module.
+
+The system supports:
+
+- Books
+- Book copies
+- Library loans
+- Borrowing records
+- Due dates
+- Returned books
+- Library fines
+
+Students can view their relevant library activity directly from the portal.
+
+---
+
+## 📢 Announcements
+
+CampusOS provides centralized academic announcements.
+
+Announcements can be displayed across dashboards and dedicated announcement interfaces to keep users informed about:
+
+- Examination schedules
+- University updates
+- Workshops
+- Library notices
+- Academic events
+- Other institutional information
+
+---
+
+## 🔔 Notifications
+
+The application includes notification functionality for surfacing relevant academic and system information to users.
+
+The notification interface follows the same role-aware architecture used throughout CampusOS.
+
+---
+
+## 🔎 Global Search
+
+CampusOS includes a global search interface designed to help users quickly navigate through the platform.
+
+Search can be used to discover relevant:
+
+- Pages
+- Courses
+- Assignments
+- Academic content
+
+Search results respect the user's role so that students and faculty receive relevant navigation and information.
+
+---
+
+# 🎨 User Interface
+
+CampusOS uses a custom responsive design system developed specifically for an academic management environment.
+
+The application supports both light and dark themes.
+
+## ☀️ Light Theme — Campus Sand
+
+The light interface uses a warm academic palette rather than a conventional pure-white dashboard.
+
+The visual system uses:
+
+- Warm ivory
+- Sand
+- Cream
+- Camel accents
+- Espresso typography and contrast
+
+The objective is to provide a calm, professional, and comfortable interface for extended academic use.
+
+## 🌙 Dark Theme — Campus Noir
+
+The dark interface uses:
+
+- Charcoal
+- Graphite
+- Dusty mauve accents
+- Soft neutral typography
+- Layered dark surfaces
+
+The dark theme avoids pure-black surfaces and instead uses multiple levels of graphite to maintain depth and visual hierarchy.
+
+---
+
+# 🛠️ Technology Stack
+
+| Technology | Purpose |
+|---|---|
+| Next.js | Full-stack React framework |
+| React | User interface development |
+| JavaScript | Application logic |
+| Supabase | Backend platform |
+| PostgreSQL | Relational database |
+| Supabase Auth | Authentication |
+| Supabase RLS | Database-level authorization |
+| CSS | Application styling |
+| Lucide Icons | Interface icons |
+
+---
+
+# 🏗️ Architecture
+
+CampusOS follows a role-based application architecture.
+
+```text
+                    CampusOS
+                        │
+                Authentication
+                        │
+                 Supabase Auth
+                        │
+              ┌─────────┴─────────┐
+              │                   │
+           Student              Faculty
+              │                   │
+              └─────────┬─────────┘
+                        │
+                  Application
+                     Logic
+                        │
+                     Supabase
+                        │
+                  PostgreSQL DB
+                        │
+              Row Level Security
