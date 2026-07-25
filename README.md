@@ -1,16 +1,16 @@
 # 🎓 Learning Management System
 
-CampusOS is a modern, role-based university and campus management platform designed to bring academic and administrative activities into a unified digital environment.
+LMS is a modern, role-based university and campus management platform designed to bring academic and administrative activities into a unified digital environment.
 
 The platform provides dedicated interfaces for students and faculty members, allowing them to manage courses, assignments, attendance, grades, fees, library activities, announcements, and other academic operations through a responsive web application.
 
-CampusOS is built using Next.js and Supabase with role-based access control, Row Level Security (RLS), and a centralized PostgreSQL database.
+LMS is built using Next.js and Supabase with role-based access control, Row Level Security (RLS), and a centralized PostgreSQL database.
 
 ---
 
 ## ✨ Overview
 
-University systems often distribute academic information across multiple portals and services. CampusOS aims to provide a centralized platform where students and faculty can access the information and functionality relevant to their roles.
+University systems often distribute academic information across multiple portals and services. LMS aims to provide a centralized platform where students and faculty can access the information and functionality relevant to their roles.
 
 The application currently includes dedicated Student and Faculty experiences with real data retrieved from Supabase.
 
@@ -50,7 +50,7 @@ Faculty members can access:
 
 ## 🔐 Authentication & Authorization
 
-CampusOS provides secure authentication using Supabase Auth.
+LMS provides secure authentication using Supabase Auth.
 
 The application supports role-based access for:
 
@@ -94,7 +94,7 @@ Dashboard information is dynamically retrieved from the database.
 
 ## 📚 Course Management
 
-CampusOS provides role-specific course views.
+LMS provides role-specific course views.
 
 Students can view courses and sections in which they are enrolled.
 
@@ -106,7 +106,7 @@ Course information is connected with the academic structure stored in Supabase.
 
 ## 📝 Assignment Management
 
-The assignment module allows academic assignments to be managed within CampusOS.
+The assignment module allows academic assignments to be managed within LMS.
 
 Current functionality includes:
 
@@ -126,7 +126,7 @@ Further end-to-end submission and grading workflow integration is under developm
 
 ## 📅 Attendance Management
 
-CampusOS provides attendance functionality for both students and faculty.
+LMS provides attendance functionality for both students and faculty.
 
 Students can view their attendance information, while faculty members can manage attendance for their assigned academic sections.
 
@@ -162,13 +162,13 @@ The underlying system includes support for:
 - Payment transactions
 - Academic-year-based fee information
 
-Currency values throughout CampusOS are intended to use the Indian Rupee (₹).
+Currency values throughout LMS are intended to use the Indian Rupee (₹).
 
 ---
 
 ## 📖 Library Management
 
-CampusOS includes an integrated library module.
+LMS includes an integrated library module.
 
 The system supports:
 
@@ -186,7 +186,7 @@ Students can view their relevant library activity directly from the portal.
 
 ## 📢 Announcements
 
-CampusOS provides centralized academic announcements.
+LMS provides centralized academic announcements.
 
 Announcements can be displayed across dashboards and dedicated announcement interfaces to keep users informed about:
 
@@ -203,13 +203,13 @@ Announcements can be displayed across dashboards and dedicated announcement inte
 
 The application includes notification functionality for surfacing relevant academic and system information to users.
 
-The notification interface follows the same role-aware architecture used throughout CampusOS.
+The notification interface follows the same role-aware architecture used throughout LMS.
 
 ---
 
 ## 🔎 Global Search
 
-CampusOS includes a global search interface designed to help users quickly navigate through the platform.
+LMS includes a global search interface designed to help users quickly navigate through the platform.
 
 Search can be used to discover relevant:
 
@@ -224,7 +224,7 @@ Search results respect the user's role so that students and faculty receive rele
 
 # 🎨 User Interface
 
-CampusOS uses a custom responsive design system developed specifically for an academic management environment.
+LMS uses a custom responsive design system developed specifically for an academic management environment.
 
 The application supports both light and dark themes.
 
@@ -274,10 +274,10 @@ The dark theme avoids pure-black surfaces and instead uses multiple levels of gr
 
 # 🏗️ Architecture
 
-CampusOS follows a role-based application architecture.
+LMS follows a role-based application architecture.
 
 ```text
-                    CampusOS
+                    LMS
                         │
                 Authentication
                         │
