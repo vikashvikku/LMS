@@ -1,4 +1,4 @@
-# 🎓 CampusOS
+# 🎓 Learning Management System
 
 CampusOS is a modern, role-based university and campus management platform designed to bring academic and administrative activities into a unified digital environment.
 
