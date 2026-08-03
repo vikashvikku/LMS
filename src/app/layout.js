@@ -1,17 +1,8 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "next-themes";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { TopProgressBar } from "@/components/layout/TopProgressBar";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata = {
   title: "CampusOS - Enterprise University OS",
@@ -23,7 +14,7 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <body
         suppressHydrationWarning
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-background text-foreground`}
+        className="font-sans antialiased min-h-screen bg-background text-foreground"
       >
         <ThemeProvider
           attribute="class"
@@ -32,10 +23,13 @@ export default function RootLayout({ children }) {
           disableTransitionOnChange
         >
           <TooltipProvider>
+            <TopProgressBar />
             {children}
+            <Toaster />
           </TooltipProvider>
         </ThemeProvider>
       </body>
     </html>
   );
 }
+

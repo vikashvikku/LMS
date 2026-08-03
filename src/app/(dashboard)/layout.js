@@ -10,7 +10,7 @@ export default async function DashboardLayout({ children }) {
       <AppSidebar role={profile.role} />
       <div className="flex flex-col">
         <AppHeader profile={profile} />
-        <main className="flex-1 p-4 md:p-8 bg-muted/40">
+        <main className="flex-1 p-4 md:p-8 bg-muted/40 page-enter">
           {children}
         </main>
       </div>
