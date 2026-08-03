@@ -187,9 +187,9 @@ export default async function FacultyAssignmentDetail({ params }) {
                             <td className="p-4 text-right">
                               {submission ? (
                                 <Button variant="ghost" size="sm" asChild>
-                                  <a href={`#`} className="text-blue-600 hover:text-blue-800">
+                                  <Link href={`/faculty/assignments/${assignment.id}/submissions/${submission.id}`} className="text-blue-600 hover:text-blue-800">
                                     View & Grade
-                                  </a>
+                                  </Link>
                                 </Button>
                               ) : (
                                 <span className="text-xs text-muted-foreground/80 uppercase font-medium tracking-wider">Awaiting</span>

@@ -14,6 +14,11 @@ import {
   Library,
   User,
   Award,
+  Users,
+  Layers,
+  Building,
+  Settings,
+  Activity,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -37,6 +42,19 @@ const roleNavigation = {
     { name: "Assignments", href: "/faculty/assignments", icon: FileText },
     { name: "Grades", href: "/faculty/grades", icon: Award },
   ],
+  university_admin: [
+    { name: "Dashboard", href: "/admin/dashboard", icon: Home },
+    { name: "Students", href: "/admin/students", icon: Users },
+    { name: "Faculty", href: "/admin/faculty", icon: GraduationCap },
+    { name: "Programs", href: "/admin/programs", icon: Layers },
+    { name: "Courses", href: "/admin/courses", icon: BookOpen },
+    { name: "Sections", href: "/admin/sections", icon: Building },
+    { name: "Timetable", href: "/admin/timetable", icon: Calendar },
+    { name: "Fees", href: "/admin/fees", icon: CreditCard },
+    { name: "Announcements", href: "/admin/announcements", icon: Bell },
+    { name: "Audit / Activity", href: "/admin/audit", icon: Activity },
+    { name: "Settings", href: "/admin/settings", icon: Settings },
+  ],
 };
 
 export function AppSidebar({ role }) {
@@ -59,6 +77,20 @@ export function AppSidebar({ role }) {
         <nav className="grid items-start px-3 text-sm font-medium gap-1">
           {navigation.map((item) => {
             const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
+            
+            if (item.disabled) {
+              return (
+                <div
+                  key={item.name}
+                  className="relative group flex items-center gap-3 rounded-md px-3 py-2.5 text-sidebar-foreground/40 cursor-not-allowed"
+                >
+                  <item.icon className="h-4 w-4 text-sidebar-foreground/30" />
+                  {item.name}
+                  <span className="ml-auto text-[10px] uppercase tracking-wider bg-sidebar-accent/50 px-1.5 py-0.5 rounded text-sidebar-foreground/50">Soon</span>
+                </div>
+              );
+            }
+
             return (
                <Link
                 key={item.name}
@@ -83,7 +115,9 @@ export function AppSidebar({ role }) {
       </div>
       <div className="p-4 border-t mt-auto">
         <div className="rounded-lg bg-sidebar-accent/50 border border-border-subtle p-4 text-xs">
-          <p className="font-semibold text-sidebar-foreground mb-1">CampusOS {role === 'faculty' ? 'Faculty' : 'Student'} Portal</p>
+          <p className="font-semibold text-sidebar-foreground mb-1">
+            CampusOS {role === 'faculty' ? 'Faculty' : role === 'university_admin' ? 'Admin' : 'Student'} Portal
+          </p>
           <p className="text-sidebar-foreground/60">Version 2.0</p>
         </div>
       </div>

@@ -204,7 +204,7 @@ export async function getFacultyDashboardData() {
 
     supabase
       .from('announcements')
-      .select('id, title, content, created_at')
+      .select('id, title, message, created_at')
       .eq('organization_id', profile.organization_id)
       .order('created_at', { ascending: false })
       .limit(5),

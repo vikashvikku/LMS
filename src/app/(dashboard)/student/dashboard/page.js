@@ -131,7 +131,9 @@ export default async function StudentDashboard() {
                 {announcements.map((announcement) => (
                   <div key={announcement.id} className="group flex flex-col gap-1.5 rounded-lg border border-transparent p-3 hover:bg-muted/50 transition-colors">
                     <p className="font-medium text-foreground group-hover:text-primary transition-colors">{announcement.title}</p>
-                    <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">{announcement.content}</p>
+                    <p className="text-sm text-muted-foreground mt-2 line-clamp-2">
+                      {announcement.message}
+                    </p>
                     <p className="text-xs font-medium text-muted-foreground/70 mt-1">
                       {formatDate(announcement.created_at)}
                     </p>

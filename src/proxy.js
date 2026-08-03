@@ -45,6 +45,10 @@ export async function proxy(request) {
     data: { user },
   } = await supabase.auth.getUser()
 
+  if (!user && request.nextUrl.pathname.startsWith('/admin') && !request.nextUrl.pathname.startsWith('/admin/fees')) {
+    return NextResponse.redirect(new URL('/login', request.url));
+  }
+
   // Protect /account route
   if (!user && request.nextUrl.pathname.startsWith('/account')) {
     const url = request.nextUrl.clone()

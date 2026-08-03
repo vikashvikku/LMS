@@ -96,9 +96,9 @@ export async function searchStudentData(query) {
   try {
     const { data: announcements } = await supabase
       .from("announcements")
-      .select("id, title, content")
+      .select("id, title, message")
       .eq("organization_id", profile.organization_id)
-      .or(`title.ilike.%${query}%,content.ilike.%${query}%`)
+      .or(`title.ilike.%${query}%,message.ilike.%${query}%`)
       .limit(5);
 
     if (announcements) {
@@ -107,7 +107,7 @@ export async function searchStudentData(query) {
           id: `announcement-${a.id}`,
           type: "Announcement",
           title: a.title,
-          subtitle: a.content.substring(0, 50) + "...",
+          subtitle: a.message.substring(0, 50) + "...",
           href: "/student/announcements",
           icon: "Bell"
         });

@@ -42,7 +42,7 @@ export async function requireProfile() {
 
 export async function requireRole(allowedRoles) {
   const profile = await requireProfile();
-  
+
   if (!allowedRoles.includes(profile.role)) {
     redirect(getDashboardPathForRole(profile.role));
   }

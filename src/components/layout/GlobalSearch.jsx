@@ -2,13 +2,13 @@
 
 import { useState, useEffect, useRef, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { Search, Loader2, BookOpen, Calendar, CheckCircle, CreditCard, FileText, GraduationCap, Home, Bell, Library, X, User, Award } from "lucide-react";
+import { Search, Loader2, BookOpen, Calendar, CheckCircle, CreditCard, FileText, GraduationCap, Home, Bell, Library, X, User, Award, Users } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { searchStudentData, searchFacultyData } from "@/actions/search";
 
 const iconMap = {
-  Home, BookOpen, Calendar, CheckCircle, FileText, GraduationCap, CreditCard, Library, Bell, User, Award
+  Home, BookOpen, Calendar, CheckCircle, FileText, GraduationCap, CreditCard, Library, Bell, User, Award, Users
 };
 
 const STATIC_PAGES = [
@@ -30,6 +30,10 @@ const STATIC_PAGES = [
   { id: "page-attendance-f", type: "Page", role: "faculty", title: "Attendance", subtitle: "Manage student attendance", href: "/faculty/attendance", icon: "CheckCircle" },
   { id: "page-assignments-f", type: "Page", role: "faculty", title: "Assignments", subtitle: "Manage course assignments", href: "/faculty/assignments", icon: "FileText" },
   { id: "page-grades-f", type: "Page", role: "faculty", title: "Grades", subtitle: "Grade student submissions", href: "/faculty/grades", icon: "Award" },
+
+  // Admin
+  { id: "page-dashboard-a", type: "Page", role: "university_admin", title: "Admin Dashboard", subtitle: "Overview of institutional operations", href: "/admin/dashboard", icon: "Home" },
+  { id: "page-students-a", type: "Page", role: "university_admin", title: "Student Management", subtitle: "Manage enrolled students", href: "/admin/students", icon: "Users" },
 ];
 
 export function GlobalSearch({ role }) {

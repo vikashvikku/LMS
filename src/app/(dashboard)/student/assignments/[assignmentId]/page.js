@@ -3,10 +3,11 @@ import { getStudentAssignmentDetails } from "@/lib/data/student";
 import { notFound } from "next/navigation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { FileText, Clock, AlertCircle, Download, CheckCircle, Upload } from "lucide-react";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
+import { SubmitButton } from "./SubmitButton";
+import { Button } from "@/components/ui/button";
 
 export default async function AssignmentDetails({ params }) {
   const { assignmentId } = await params;
@@ -20,6 +21,7 @@ export default async function AssignmentDetails({ params }) {
   const dueDate = new Date(assignment.due_date);
   const sub = assignment.student_submission;
   const isOverdue = dueDate < new Date() && (!sub || sub.status === 'draft');
+  const isLate = dueDate < new Date();
   const grade = sub?.grades;
 
   return (
@@ -33,7 +35,7 @@ export default async function AssignmentDetails({ params }) {
           {isOverdue ? (
             <Badge variant="destructive">Overdue</Badge>
           ) : sub?.status === 'submitted' ? (
-            <Badge className="bg-green-600 hover:bg-green-700">Submitted</Badge>
+            <Badge className="bg-green-600 hover:bg-green-700 text-white">Submitted</Badge>
           ) : (
             <Badge variant="secondary">Pending</Badge>
           )}
@@ -85,16 +87,16 @@ export default async function AssignmentDetails({ params }) {
           )}
 
           {grade && grade.is_released && (
-            <Card className="border-green-200 shadow-sm bg-green-50/30">
+            <Card className="border-green-200 shadow-sm bg-green-50/30 dark:bg-green-950/10 dark:border-green-900/50">
               <CardHeader>
-                <CardTitle className="text-green-800 flex items-center gap-2">
+                <CardTitle className="text-green-800 dark:text-green-500 flex items-center gap-2">
                   <CheckCircle className="h-5 w-5" />
                   Grade & Feedback
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-baseline gap-2">
-                  <span className="text-4xl font-bold text-green-700">{grade.marks_obtained}</span>
+                  <span className="text-4xl font-bold text-green-700 dark:text-green-400">{grade.marks_obtained}</span>
                   <span className="text-lg text-muted-foreground">/ {assignment.max_marks} marks</span>
                 </div>
                 {grade.feedback && (
@@ -134,7 +136,7 @@ export default async function AssignmentDetails({ params }) {
                   <Separator />
                   <div className="flex justify-between items-center text-sm">
                     <span className="text-muted-foreground">Submitted On</span>
-                    <span className="font-medium text-green-700">
+                    <span className="font-medium text-green-700 dark:text-green-500">
                       {formatDateTime(sub.submitted_at)}
                     </span>
                   </div>
@@ -155,14 +157,16 @@ export default async function AssignmentDetails({ params }) {
             {!grade?.is_released && (
               <CardFooter className="bg-muted/50 border-t pt-4">
                 <div className="w-full text-center">
-                  <p className="text-sm text-muted-foreground mb-4 flex items-center justify-center gap-2">
-                    <AlertCircle className="h-4 w-4" />
-                    Storage policies for direct submission upload are currently pending security configuration.
+                  <p className="text-sm text-muted-foreground mb-4 flex items-center justify-center gap-2 text-left">
+                    <AlertCircle className="h-4 w-4 shrink-0" />
+                    Storage policies for direct submission upload are currently pending security configuration. Click below to register your submission.
                   </p>
-                  <Button disabled className="w-full">
-                    <Upload className="h-4 w-4 mr-2" />
-                    {sub?.status === 'submitted' ? 'Resubmit' : 'Submit Assignment'}
-                  </Button>
+                  <SubmitButton 
+                    assignmentId={assignment.id} 
+                    isSubmitted={sub?.status === 'submitted'} 
+                    disabled={isOverdue && !assignment.allow_late_submission}
+                    isLate={isLate}
+                  />
                 </div>
               </CardFooter>
             )}

@@ -38,7 +38,7 @@ export default async function StudentAnnouncements() {
               </CardHeader>
               <CardContent>
                 <div className="prose prose-sm max-w-none text-foreground/90 whitespace-pre-wrap">
-                  {announcement.content}
+                  {announcement.message}
                 </div>
               </CardContent>
             </Card>

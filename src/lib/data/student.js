@@ -489,9 +489,9 @@ export async function getStudentAnnouncements() {
     .select(`
       id,
       title,
-      content,
+      message,
       created_at,
-      author:profiles (first_name, last_name)
+      author:profiles!created_by (first_name, last_name)
     `)
     .eq('organization_id', profile.organization_id)
     .order('created_at', { ascending: false });
